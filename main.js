@@ -1,21 +1,21 @@
 var SpacebookApp = function () {
   // dummy data
   var posts = [
-    {text: "Hello world 1", comments:[
-      { text: "Man, this is a comment!"},
-      { text: "Man, this is a comment!"},
-      { text: "Man, this is a comment!"}
-    ]},
-    {text: "Hello world 2", comments:[
-      { text: "Man, this is a comment!"},
-      { text: "Man, this is a comment!"},
-      { text: "Man, this is a comment!"}
-    ]},
-    {text: "Hello world 3", comments:[
-      { text: "Man, this is a comment!"},
-      { text: "Man, this is a comment!"},
-      { text: "Man, this is a comment!"}
-    ]}
+    // {text: "Hello world 1", comments:[
+    //   { text: "Man, this is a comment!"},
+    //   { text: "Man, this is a comment!"},
+    //   { text: "Man, this is a comment!"}
+    // ]},
+    // {text: "Hello world 2", comments:[
+    //   { text: "Man, this is a comment!"},
+    //   { text: "Man, this is a comment!"},
+    //   { text: "Man, this is a comment!"}
+    // ]},
+    // {text: "Hello world 3", comments:[
+    //   { text: "Man, this is a comment!"},
+    //   { text: "Man, this is a comment!"},
+    //   { text: "Man, this is a comment!"}
+    // ]}
   ];
 
   // variable for storing our posts div
