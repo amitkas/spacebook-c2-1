@@ -1,4 +1,10 @@
+
+
 var SpacebookApp = function () {
+
+  var STORAGE_ID = 'spacebook';
+
+
   // dummy data
   var posts = [
     // {text: "Hello world 1", comments:[
@@ -23,13 +29,33 @@ var SpacebookApp = function () {
 
   // build a single post object and push it to array
   var createPost = function (text) {
+
     posts.push({ text: text, comments: []});
+              // saveToLocalStorage(posts)
+
   };
+
+  var saveToLocalStorage = function () {
+    localStorage.setItem(STORAGE_ID, JSON.stringify(posts));
+  }
+
+  var getFromLocalStorage = function () {
+    console.log('array before')
+    console.log(localStorage['spacebook']);
+    console.log('------------------------')
+    console.log('array after')
+    console.log(JSON.parse(localStorage['spacebook']))
+
+    posts = JSON.parse(localStorage['spacebook'] || '[]');
+  }
+
+
 
   // Empty all the posts, then add them from the posts array along with our
   // new comments HTML
   var renderPosts = function () {
     $posts.empty();
+
 
     for (var i = 0; i < posts.length; i += 1) {
       var post = posts[i];
@@ -44,12 +70,14 @@ var SpacebookApp = function () {
     }
   }
 
+
   var renderComments = function () {
     $('.comments-list').empty();
 
     for (var i = 0; i < posts.length; i += 1) {
       // the current post in the iteration
       var post = posts[i];
+
 
       // finding the "post" element in the page that is equal to the
       // current post we're iterating on... alertnatively we could have
@@ -111,7 +139,8 @@ var SpacebookApp = function () {
     createPost: createPost,
     renderPosts: renderPosts,
     removePost: removePost,
-
+    saveToLocalStorage: saveToLocalStorage,
+    getFromLocalStorage: getFromLocalStorage,
     createComment: createComment,
     renderComments: renderComments,
     removeComment: removeComment,
@@ -122,6 +151,7 @@ var SpacebookApp = function () {
 var app = SpacebookApp();
 
 // immediately invoke the render method
+app.getFromLocalStorage();
 app.renderPosts();
 app.renderComments();
 
@@ -131,6 +161,7 @@ $('.add-post').on('click', function (e) {
   app.createPost(text);
   app.renderPosts();
   app.renderComments();
+  app.saveToLocalStorage();
 });
 
 $('.posts').on('click', '.remove', function () {
